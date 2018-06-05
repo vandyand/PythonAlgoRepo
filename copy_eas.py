@@ -5,8 +5,8 @@ import shutil
 
 ea_paths = [
         "C:/Program Files (x86)/OANDA - MetaTrader/MQL4/Experts",
-        "C:/Program Files (x86)/OANDA - MetaTrader - Copy/MQL4/Experts",
-        "C:/Program Files (x86)/OANDA - MetaTrader - Copy (2)/MQL4/Experts"]
+        "C:/Program Files (x86)/OANDA - MetaTrader - copy/MQL4/Experts",
+        "C:/Program Files (x86)/OANDA - MetaTrader - copy (2)/MQL4/Experts"]
 
 #try:
 #    shutil.rmtree(ea_paths[1])

@@ -29,7 +29,6 @@ for i in range(3):
         os.remove('master_batch_file.bat')
     except Exception:
         pass
-#    try:
-#        os.remove('hyperparameters.txt')
-#    except Exception:
-#        pass
+    
+    os.chdir(params_sets_file_paths[i]+'/files')
+    [os.remove(f) for f in os.listdir() if '.csv' in f]

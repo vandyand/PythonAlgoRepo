@@ -31,6 +31,10 @@ try:
     hyper_iterator = int(sys.argv[1])
 except Exception:
     hyper_iterator = 0
+
+if sum(1 for line in open('hyperparameters.txt'))==40:
+    hyper_iterator = 0
+
 hyper_lines_per_iterator = 40
 
 # Editable parameters
@@ -65,6 +69,7 @@ data_set_num           = int(content[17+hyper_lines_per_iterator*hyper_iterator]
 num_backtests_per_set  = int(content[18+hyper_lines_per_iterator*hyper_iterator][1])
 #
 #
+num_iterations += threshold
 ##########################################################
 
 
@@ -103,6 +108,8 @@ Lots_Value = float(content[29+hyper_lines_per_iterator*hyper_iterator][1])
 
 get_random_results = int(content[30+hyper_lines_per_iterator*hyper_iterator][1])
 only_positive_results = int(content[31+hyper_lines_per_iterator*hyper_iterator][1])
+
+
 
 for j in range(3):
 
@@ -310,7 +317,7 @@ Open_Bars_Start,Open_Bars_Step,Lots_Value,get_random_results))
 '''.format(batch_file_paths[j],params_sets_file_paths[j],param_file_name)
                 batch_file.write(batch_file_content)
             
-            move_content = '''move "{}\\files\\{}_{}.csv" "{}\\Set{}"
+            move_content = '''move "{}\\files\\{}_{}.csv" "{}\\Set{}"\n
 '''.format(params_sets_file_paths[j],file_nameish,symbol,data_hub_file_path,data_set_num)
             batch_file.write(move_content)
             

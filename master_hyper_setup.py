@@ -1,16 +1,16 @@
 
 # Hyperparameters:
-
-num_iterations = 5
-back_step_sizes = [1,2]#[20,10,5,1]
+num_iterations = 24
+back_step_sizes = [1]#[20,10,5,1]
 back_stepss = [3]#[3,4,5]
 fore_stepss = [1]#[1,2]
 start_year = 2018
 start_month = 5
 start_day = 25
-EA = "DiscreteModelMaker\EchoDiscreteModelMaker"
+EA = "DiscreteModelMaker\FoxtrotDiscreteModelMaker"
 symbol = 'EURUSD'
 spread = 15
+
 
 # EA Parameters
 lookback_time_dayss = [4]#[50,10,5,2]
@@ -19,9 +19,9 @@ timeframe = 60
 Chart_Timeframe = 'H1'
 optimization_score_nums = [0]
 file_name_prefix_vers = 0
-threshold = 0
-data_set_num = 0
-num_backtests_per_set = 2
+threshold = 24
+data_set_num = 2
+num_backtests_per_set = 3
 Long_Back_1_Start = 1
 Long_Back_1_Step = 1
 Long_Back_2_Start = 1
@@ -35,6 +35,10 @@ Open_Bars_Step = 1
 Lots_Value = 0.01
 get_random_results = 1
 only_positive_results = 1
+
+
+# File parameters
+hyper_lines_per_iterator = 40
 
 
 
@@ -59,7 +63,7 @@ hyperparameters_file = open('hyperparameters.txt','a')
 
 
 
-count = 0
+count = data_set_num
 for optimization_score_num in optimization_score_nums:
     for holding_time_days in holding_time_dayss:
         for lookback_time_days in lookback_time_dayss:
@@ -145,9 +149,9 @@ only_positive_results))
                         mamamamaster_file.write('''python delete_files.py
 python big_master_backtests_generator.py {}
 start /wait "" "master_batch_file.bat"
-python analysis.py {} {}
+python analysis.py {}
 
-'''.format(data_set_num,data_set_num,symbol))
+'''.format(data_set_num,data_set_num))
 
 
 
